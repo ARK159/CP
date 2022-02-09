@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+int fenwick[10000];
+void update(vector<int> v,int del,int i){
+while(i<v.size()){
+		fenwick[i]+=del;
+		i=i+(i&-i);
+}
+}
+int sum(vector<int> v,int i)
+{
+		int sum=0;
+		while(i>0){
+			sum+=fenwick[i];
+			i=i-(i&-i);
+		}
+return sum;
+}
+int main() {
+freopen("input.txt","r",stdin);
+freopen("output.txt","w",stdout);
+vector<int> v(14,0);
+for(int i=1;i<=12;i++){
+	v[i]=i;
+}
+int prefix[14];
+prefix[0]=0;
+for(int i=1;i<=12;i++){
+			prefix[i]=prefix[i-1]+v[i];
+cout<<prefix[i]<<endl;
+}
+cout<<endl;
+
+for(int i=12;i>0;i--){
+	int idash=i-(i&-i);
+	fenwick[i]=prefix[i]-prefix[idash];
+	cout<<fenwick[i]<<"\n";
+}
+cout<<sum(v,3)-sum(v,0);
+ 
+//cout<<"a";
+
+
+}

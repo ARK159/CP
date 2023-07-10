@@ -20,16 +20,13 @@ int main() {
 freopen("input.txt","r",stdin);
 freopen("output.txt","w",stdout);
 vector<int> v(14,0);
-for(int i=1;i<=12;i++){
+for(int i=1;i<=12;i++)
 	v[i]=i;
-}
+
 int prefix[14];
 prefix[0]=0;
-for(int i=1;i<=12;i++){
-			prefix[i]=prefix[i-1]+v[i];
-cout<<prefix[i]<<endl;
-}
-cout<<endl;
+for(int i=1;i<=12;i++)
+			prefix[i]=prefix[i-1]+v[i],cout<<prefix[i]<<endl,cout<<endl;
 
 for(int i=12;i>0;i--){
 	int idash=i-(i&-i);
